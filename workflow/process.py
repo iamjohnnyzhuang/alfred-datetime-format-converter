@@ -2,7 +2,7 @@
 
 import alfred
 import calendar
-from delorean import utcnow, parse, epoch
+from delorean import now, parse, epoch
 
 def process(query_str):
     """ Entry point """
@@ -17,11 +17,12 @@ def parse_query_value(query_str):
     try:
         query_str = str(query_str).strip('"\' ')
         if query_str == 'now':
-            d = utcnow()
+            d = now()
         else:
             # Parse datetime string or timestamp
             try:
                 d = epoch(float(query_str))
+                d.shift('Asia/Shanghai')
             except ValueError:
                 d = parse(str(query_str))
     except (TypeError, ValueError):
@@ -38,10 +39,10 @@ def alfred_items_for_value(value):
     results = []
 
     # First item as timestamp
-    item_value = calendar.timegm(value.datetime.utctimetuple())
+    item_value = calendar.timegm(value.datetime.timetuple())
     results.append(alfred.Item(
         title=str(item_value),
-        subtitle=u'UTC Timestamp',
+        subtitle=u'Asia/Shanghai Timestamp',
         attributes={
             'uid': alfred.uid(index), 
             'arg': item_value,
