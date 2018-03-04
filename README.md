@@ -1,16 +1,8 @@
 alfred-datetime-format-converter
 ================================
 
-Alfred 2 workflow for converting between timestamps and formatted datetime strings with ease.
+基于开源插件 [alfred-datetime-format-converter](https://github.com/mwaterfall/alfred-datetime-format-converter) 重写。
 
-Simply type "df" followed by: "now", a UTC unix timestamp, or a formatted datetime string.
-
-This will present you with the parsed date in various formats ready to copy to your clipboard.
-
-[Download](https://raw.github.com/mwaterfall/alfred-datetime-format-converter/master/download/DatetimeFormatConverter.alfredworkflow)
-
-[Alfred Forum Topic](http://www.alfredforum.com/topic/1558-datetime-format-converter-convert-between-unix-timestamps-and-datetime-strings/)
-
-![Screenshot](https://raw.github.com/mwaterfall/alfred-datetime-format-converter/master/download/screenshot_1.png)
-![Screenshot](https://raw.github.com/mwaterfall/alfred-datetime-format-converter/master/download/screenshot_2.png)
-![Screenshot](https://raw.github.com/mwaterfall/alfred-datetime-format-converter/master/download/screenshot_3.png)
+主要改进点：
+1. 完全基于内置datetime模块实现,删除第三方依赖包,使插件更加轻量化
+2. 支持本土化,原插件时区从UTC开始,不方便本土使用,重写后时区为本机使用时间对应时区
